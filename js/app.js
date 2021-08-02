@@ -30,36 +30,40 @@ function addTodo(e) {
   //Prevents form from submitting
   e.preventDefault();
 
-  // Creating div which contains li and 2 buttons
-  const todoDiv = document.createElement("div");
-  todoDiv.classList.add("todo");
+  if (todoInput.value === "") {
+    alert("You must write something!");
+  } else {
+    // Creating div which contains li and 2 buttons
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
 
-  // Add to local storage
-  saveLocalTodos(todoInput.value);
+    // Add to local storage
+    saveLocalTodos(todoInput.value);
 
-  // Creating li element
-  const todoLi = document.createElement("li");
-  todoLi.innerText = todoInput.value;
-  todoLi.classList.add("todo-item");
-  todoDiv.appendChild(todoLi);
+    // Creating li element
+    const todoLi = document.createElement("li");
+    todoLi.innerText = todoInput.value;
+    todoLi.classList.add("todo-item");
+    todoDiv.appendChild(todoLi);
 
-  // Check button to complete task
-  const completeButton = document.createElement("button");
-  completeButton.classList.add("complete-btn");
-  completeButton.innerHTML = '<i class="fas fa-check"></i>';
-  todoDiv.appendChild(completeButton);
+    // Check button to complete task
+    const completeButton = document.createElement("button");
+    completeButton.classList.add("complete-btn");
+    completeButton.innerHTML = '<i class="fas fa-check"></i>';
+    todoDiv.appendChild(completeButton);
 
-  // Trash button to delete task
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("delete-btn");
-  deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
-  todoDiv.appendChild(deleteButton);
+    // Trash button to delete task
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-btn");
+    deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+    todoDiv.appendChild(deleteButton);
 
-  // Appending the div to todoList
-  todoList.appendChild(todoDiv);
+    // Appending the div to todoList
+    todoList.appendChild(todoDiv);
 
-  // Clearing out the input tag
-  todoInput.value = "";
+    // Clearing out the input tag
+    todoInput.value = "";
+  }
 }
 
 function checkDelete(e) {
